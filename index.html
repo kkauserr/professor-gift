@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Prof. Navabi</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: white;
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Headings */
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #6a5acd, #00c6ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  max-width: 600px;
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+/* Button */
+button {
+  margin-top: 30px;
+  padding: 12px 24px;
+  border: none;
+  background: linear-gradient(90deg, #6a5acd, #00c6ff);
+  color: white;
+  font-size: 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* Timeline */
+.timeline {
+  position: relative;
+  width: 80%;
+  margin-top: 40px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 3px;
+  height: 100%;
+  background: rgba(255,255,255,0.2);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 20px;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* Timeline dots */
+.dot {
+  position: absolute;
+  top: 20px;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(90deg, #6a5acd, #00c6ff);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.timeline-item.left .dot {
+  right: -9px;
+}
+
+.timeline-item.right .dot {
+  left: -9px;
+}
+
+.dot:hover {
+  transform: scale(1.3);
+  box-shadow: 0 0 15px #00c6ff;
+}
+
+/* Hover image preview */
+#preview {
+  position: fixed;
+  pointer-events: none;
+  display: none;
+  z-index: 1000;
+}
+
+#preview img {
+  width: 260px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  animation: fadeZoom 0.3s ease;
+}
+
+@keyframes fadeZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Hidden message */
+#hidden {
+  display: none;
+  margin-top: 20px;
+  font-size: 18px;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.glow {
+  text-shadow: 0 0 10px rgba(0,198,255,0.8);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Landing -->
+<section class="reveal">
+  <h1>For Prof. Navabi</h1>
+  <p>A small thank you for a life-changing impact</p>
+  <button onclick="scrollToSection()">Start from the beginning</button>
+</section>
+
+<!-- Beginning -->
+<section class="reveal">
+  <h2 class="glow">The Beginning</h2>
+  <p>It started with a simple email.<br>
+  I was 7 minutes late, overwhelmed, and unsure of myself.</p>
+
+  <p>I thought I was asking about an assignment.<br>
+  I didn’t realize I was about to find a mentor.</p>
+</section>
+
+<!-- Timeline -->
+<section class="reveal">
+  <h2 class="glow">The Journey</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item left">
+      <div class="dot" data-img="email.png"></div>
+      <h3>Fall 2022</h3>
+      <p>The beginning. A moment that changed everything.</p>
+    </div>
+
+    <div class="timeline-item right">
+      <div class="dot" data-img="codesprouts.jpg"></div>
+      <h3>Fall 2024</h3>
+      <p>Desert CodeSprouts — learning impact, leadership, and purpose.</p>
+    </div>
+
+    <div class="timeline-item left">
+      <div class="dot" data-img="ghc.jpg"></div>
+      <h3>Fall 2025</h3>
+      <p>Grace Hopper Celebration — stepping into opportunities I once feared.</p>
+    </div>
+
+  </div>
+
+  <p style="margin-top:40px;">
+    From that first email to where I am today—<br>
+    every step of my journey has been shaped by you.
+  </p>
+</section>
+
+<!-- Impact -->
+<section class="reveal">
+  <h2 class="glow">Your Impact</h2>
+  <p>Over the past four years, you have been more than a professor to me.<br>
+  You have been my mentor, my guide, and my constant support.</p>
+
+  <p>You didn’t just teach me computer science—<br>
+  you taught me how to believe in myself.</p>
+
+  <p>Whatever I become in the future will always carry your influence.</p>
+</section>
+
+<!-- Final -->
+<section class="reveal">
+  <button onclick="showMessage()">One last thing...</button>
+  <div id="hidden">
+    <p>
+      From being 7 minutes late…<br>
+      to finding someone who changed my life—<br><br>
+      Thank you.
+    </p>
+  </div>
+</section>
+
+<!-- Floating preview -->
+<div id="preview">
+  <img id="preview-img" src="">
+</div>
+
+<script>
+
+/* Scroll */
+function scrollToSection() {
+  window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
+}
+
+/* Reveal animation */
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+  reveals.forEach(section => {
+    const windowHeight = window.innerHeight;
+    const elementTop = section.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 100) {
+      section.classList.add("visible");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+/* Hidden message */
+function showMessage() {
+  document.getElementById("hidden").style.display = "block";
+}
+
+/* Hover preview */
+const preview = document.getElementById("preview");
+const previewImg = document.getElementById("preview-img");
+
+document.querySelectorAll(".dot").forEach(dot => {
+  // Use a small preloader so the preview only appears once the image is ready.
+  let preloader = null;
+  let raf = null;
+
+  dot.addEventListener("mouseenter", (e) => {
+    const src = dot.getAttribute("data-img");
+    if (!src) return;
+
+    // Cancel any previous preloader
+    if (preloader) {
+      preloader.onload = preloader.onerror = null;
+      preloader = null;
+    }
+
+    preloader = new Image();
+    preloader.onload = () => {
+      // Set the visible img only after it's loaded to avoid broken/blank previews
+      previewImg.src = src;
+      preview.style.display = 'block';
+    };
+    preloader.onerror = () => {
+      // Hide preview if image fails to load
+      preview.style.display = 'none';
+      console.warn('Preview image failed to load:', src);
+      preloader = null;
+    };
+    // Start loading
+    preloader.src = src;
+  });
+
+  dot.addEventListener("mousemove", (e) => {
+    // Position using client coordinates because preview is fixed
+    // Use requestAnimationFrame to avoid jank on rapid mousemove events
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+
+    if (raf) cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(() => {
+      const previewWidth = 260; // matches CSS #preview img width
+      const previewHeight = preview.offsetHeight || 180; // fallback estimate
+
+      let x = clientX + 20;
+      let y = clientY - previewHeight / 2;
+
+      // Clamp horizontally
+      if (x + previewWidth > window.innerWidth - 10) {
+        x = clientX - previewWidth - 20;
+      }
+      if (x < 10) x = 10;
+
+      // Clamp vertically
+      const minY = 10;
+      const maxY = window.innerHeight - previewHeight - 10;
+      if (y < minY) y = minY;
+      if (y > maxY) y = maxY;
+
+      preview.style.left = x + 'px';
+      preview.style.top = y + 'px';
+    });
+  });
+
+  dot.addEventListener("mouseleave", () => {
+    // Hide preview and cancel preloader/raf
+    preview.style.display = "none";
+    if (preloader) {
+      preloader.onload = preloader.onerror = null;
+      preloader = null;
+    }
+    if (raf) {
+      cancelAnimationFrame(raf);
+      raf = null;
+    }
+  });
+});
+
+</script>
+
+</body>
+</html>
